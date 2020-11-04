@@ -1,0 +1,212 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+    <a class="navbar-brand" href="#">DEMO TEST</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white">
+      <span class="navbar-toggler-icon" ></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="nav navbar-nav pull-right">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">HOME </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">JOBS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CLIENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CONTACT US</a>
+        </li>
+      </ul>  
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>I'm looking for.</h2>
+    <form>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-9">
+            <input type="text" class="form-control" placeholder="Enter a Job Description">
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-primary mb-2 "><i class="fa fa-search"></i> Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6 mt-1">
+          <div class="custom-control custom-checkbox custom-control-inline mb-5">
+            <input class="custom-control-input" type="checkbox" name="example-inline-checkbox1" id="example-inline-checkbox1" value="option1">
+            <label class="custom-control-label" for="example-inline-checkbox1">Full Time</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-control-inline mb-5">
+            <input class="custom-control-input" type="checkbox" name="example-inline-checkbox2" id="example-inline-checkbox2" value="option2">
+            <label class="custom-control-label" for="example-inline-checkbox2">Part Time</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="0">Select Your Locaton</option>
+              <option value="1">Mumbai</option>
+              <option value="2">Pune</option>
+              <option value="3">Nashik</option>
+              <option value="4">Goa</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container text-center pb-5">
+    <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">Register</button>
+  </div>
+</header>
+
+<div class="section2">
+  <div class="container text-center">
+    <h4 class="">We're leaders in </h4>
+    <h3>Creative Digital Recruitment</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+    <button class="btn btn-outline-primary  "> FIND OUT MORE ABOUT US</button>
+  </div>
+</div>
+<div class="section3">
+  <div class="container text-center">
+    <h6> Subscribe to our Job Seekar Mailing List</h6>
+    <form>
+      <div class="form-group row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+           <input type="email" name="" class="form-control mb-5"placeholder="Enter Your Email Address">
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form [formGroup]="contactForm" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="row">
+   
+          <div class="col-md-4">
+            
+            <label for="fileToUpload">
+              <div class="profile-pic">
+                <img [src]=img>
+                <span style="color:blue;">Upload your photo</span>
+              </div>
+            </label>
+            <input type="File" name="fileToUpload" id="fileToUpload" style="display: none;cursor: pointer" [formControl]="contactForm.controls['fileToUpload']"  (change)="upload($event)" required>
+           
+          </div>
+          <div class="col-md-8">
+           
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="First Name" name="first_name" [formControl]="contactForm.controls['first_name']" required>
+                    <span *ngIf="!contactForm.controls['first_name'].valid && contactForm.controls['first_name']?.touched" style="color: red;">Enter Your First Name</span>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Last Name" name="last_name" [formControl]="contactForm.controls['last_name']" required>
+                    <span *ngIf="!contactForm.controls['last_name'].valid && contactForm.controls['last_name']?.touched" style="color: red;">Enter Your Last Name</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" [formControl]="contactForm.controls['email']" required placeholder="Email">
+                <span *ngIf="!contactForm.controls['email'].valid && contactForm.controls['email']?.touched" style="color: red;">Enter Your Email Address</span>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="(541) 754-3010" name="phone_no" [formControl]="contactForm.controls['phone_no']" maxlength="10" required>
+                <span *ngIf="!contactForm.controls['phone_no'].valid && contactForm.controls['phone_no']?.touched" style="color: red;">Enter Your Phone Number</span>
+              </div>
+              <div class="form-group ">
+                <div class="range-slider">
+                  <label>Age</label>
+                  <input class="range-slider__range" id="age1" type="range" value="0" min="20" max="60" name="age" [formControl]="contactForm.controls['age']" required>
+                  <span class="range-slider__value">{{this.contactForm.controls.age.value}}</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="ddl" name="country" [formControl]="contactForm.controls['country']" required>
+                  <option value="" disabled selected hidden>Country</option>
+                  <option *ngFor="let c of country" [value]="c.id">{{c.country}}</option>
+                </select>
+                <span *ngIf="!contactForm.controls['country'].valid && contactForm.controls['country']?.touched" style="color: red;">Enter Your Country Name</span>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="ddl2" name="state" [formControl]="contactForm.controls['state']" required>
+                  <option value="" disabled selected hidden>State</option>
+                  <option *ngFor="let s of state" [value]="s.id">{{s.state}}</option>
+                </select>
+                <span *ngIf="!contactForm.controls['state'].valid && contactForm.controls['state']?.touched" style="color: red;">Enter Your State Name</span>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="address" name="address" [formControl]="contactForm.controls['address']" required>
+                  <option value="" disabled selected hidden>Address</option>
+                  <option value='1'>Home</option>
+                  <option value='2'>Company</option>
+                </select>
+                <span *ngIf="!contactForm.controls['address'].valid && contactForm.controls['address']?.touched" style="color: red;">Enter Your Address Name</span>
+              </div>
+              <div class="form-group" *ngIf="contactForm.controls['address'].value == '1'">
+                <input type="text" class="form-control" placeholder="Address1" name="address_one" [formControl]="contactForm.controls['address_one']" >
+                <span *ngIf="!contactForm.controls['address_one'].valid && contactForm.controls['address_one']?.touched" style="color: red;">Enter Your Address 1</span>
+                <input type="text" class="form-control mt-3" placeholder="Address2" name="address_two" [formControl]="contactForm.controls['address_two']" >
+                <span *ngIf="!contactForm.controls['address_two'].valid && contactForm.controls['address_two']?.touched" style="color: red;">Enter Your Address 2</span>
+              </div>
+              <div class="form-group" *ngIf="contactForm.controls['address'].value == '2'">
+                <input type="text" class="form-control" placeholder="Company Address 1" name="address_one1" [formControl]="contactForm.controls['address_one1']" >
+                <span *ngIf="!contactForm.controls['address_one1'].valid && contactForm.controls['address_one1']?.touched" style="color: red;">Enter Your Address 2</span>
+                <input type="text" class="form-control mt-3" placeholder="Company Address 2" name="address_two1" [formControl]="contactForm.controls['address_two1']" >
+                <span *ngIf="!contactForm.controls['address_two1'].valid && contactForm.controls['address_two1']?.touched" style="color: red;">Enter Your Address 2</span>
+              </div>
+              <div class="form-group">
+                <div class="custom-control custom-checkbox mb-5">
+                  <input class="custom-control-input" type="checkbox" name="example-checkbox1" id="example-checkbox1" value="false" name="is_sub" [formControl]="contactForm.controls['is_sub']" required>
+                  <label class="custom-control-label text-muted" for="example-checkbox1" style="color: black">subscribe to newsletter</label><br>
+                  <span *ngIf="!contactForm.controls['is_sub'].valid && contactForm.controls['is_sub']?.touched" style="color: red;">Please Select Option</span>
+                </div>
+                
+              </div>
+            
+          </div>
+        </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" [disabled]="!contactForm.valid || !isvalid" (click)="postData()" >Submit</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
